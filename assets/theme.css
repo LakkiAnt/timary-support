@@ -1,0 +1,55 @@
+/* Semantic colors from Timary AppTheme assets. Do not add feature-specific colors. */
+
+:root {
+  --background: #e4e7eb;
+  --surface: #ffffff;
+  --elevated: #eef0f3;
+  --primary-text: #202833;
+  --secondary-text: #5d6672;
+  --border: #c3cbd5;
+  --accent: #2b3340;
+  --data: #8c5a1e;
+  --day-off-tint: #305cbd;
+}
+
+@media (prefers-color-scheme: dark) {
+:root {
+  --background: #101216;
+  --surface: #24282f;
+  --elevated: #343a43;
+  --primary-text: #f0f3f7;
+  --secondary-text: #b7c0cc;
+  --border: #535e6e;
+  --accent: #e6edf6;
+  --data: #d6b080;
+  --day-off-tint: #89aef3;
+}
+}
+
+@media (prefers-contrast: more) {
+:root {
+  --background: #dce1e7;
+  --surface: #ffffff;
+  --elevated: #e9edf2;
+  --primary-text: #161d26;
+  --secondary-text: #434d5a;
+  --border: #7b8796;
+  --accent: #1b2330;
+  --data: #6c4214;
+  --day-off-tint: #1d4497;
+}
+}
+
+@media (prefers-color-scheme: dark) and (prefers-contrast: more) {
+:root {
+  --background: #0b0e12;
+  --surface: #1b2027;
+  --elevated: #282f39;
+  --primary-text: #ffffff;
+  --secondary-text: #c8d1dc;
+  --border: #718097;
+  --accent: #f3f7fc;
+  --data: #e7c396;
+  --day-off-tint: #a9c5ff;
+}
+}

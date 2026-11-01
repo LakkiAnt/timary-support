@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lakkiant.github.io/timary-support/sitemap.xml
