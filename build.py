@@ -15,7 +15,7 @@ COPY = {
         "tagline": "A little more order. A little more time.",
         "intro": "Timary brings your appointments, clients and services together, so you can focus on the people you work with.",
         "home": "Home", "privacy": "Privacy policy", "support": "Support",
-        "skip": "Skip to content", "nav": "Main navigation", "language": "Українська",
+        "skip": "Skip to content", "nav": "Main navigation",
         "date": "Effective and last updated: November 2, 2026",
         "footer": "An organizer for independent service professionals.",
         "privacy_intro": "A clear explanation of what stays on your device, what is shared with service providers, and the choices you have.",
@@ -90,7 +90,7 @@ COPY = {
         "tagline": "Більше порядку. Більше часу для себе.",
         "intro": "Timary об’єднує записи, клієнтів і послуги, щоб ви могли зосередитися на людях, з якими працюєте.",
         "home": "Головна", "privacy": "Політика приватності", "support": "Підтримка",
-        "skip": "Перейти до вмісту", "nav": "Основна навігація", "language": "English",
+        "skip": "Перейти до вмісту", "nav": "Основна навігація",
         "date": "Чинна з 2 листопада 2026 року · Оновлено 2 листопада 2026 року",
         "footer": "Органайзер для фахівців, які працюють за записом.",
         "privacy_intro": "Що залишається на вашому пристрої, які дані отримують постачальники сервісів і чим ви можете керувати.",
@@ -164,8 +164,12 @@ COPY = {
 }
 
 
+COPY["ru"] = json.loads((ROOT / "ru.json").read_text(encoding="utf-8"))
+LANGUAGE_NAMES = {"en": "English", "uk": "Українська", "ru": "Русский"}
+
+
 def location(lang, kind):
-    prefix = "" if lang == "en" else "uk/"
+    prefix = "" if lang == "en" else lang + "/"
     return prefix + ("" if kind == "home" else kind + "/")
 
 
@@ -175,11 +179,18 @@ def page(lang, kind, body):
     depth = len([p for p in current.split("/") if p])
     root = "../" * depth or "./"
     title = "Timary" if kind == "home" else c[kind] + " · Timary"
-    other = "uk" if lang == "en" else "en"
     canonical = BASE + "/" + current
     navigation = "".join(
         f'<a href="{root}{location(lang, target)}"' + (' aria-current="page"' if target == kind else '') + f'>{c[target]}</a>'
         for target in ("privacy", "support")
+    )
+    languages = "".join(
+        f'<a class="language" lang="{other}" hreflang="{other}" href="{root}{location(other, kind)}">{name}</a>'
+        for other, name in LANGUAGE_NAMES.items() if other != lang
+    )
+    alternates = "\n  ".join(
+        f'<link rel="alternate" hreflang="{other}" href="{BASE}/{location(other, kind)}">'
+        for other in LANGUAGE_NAMES
     )
     return f'''<!doctype html>
 <html lang="{lang}">
@@ -190,8 +201,7 @@ def page(lang, kind, body):
   <title>{escape(title)}</title>
   <meta name="description" content="{escape(c['intro'] if kind == 'home' else c[kind + '_intro'], quote=True)}">
   <link rel="canonical" href="{canonical}">
-  <link rel="alternate" hreflang="en" href="{BASE}/{location('en', kind)}">
-  <link rel="alternate" hreflang="uk" href="{BASE}/{location('uk', kind)}">
+  {alternates}
   <link rel="alternate" hreflang="x-default" href="{BASE}/{location('en', kind)}">
   <link rel="icon" type="image/png" href="{root}assets/icon.png">
   <link rel="stylesheet" href="{root}assets/theme.css">
@@ -201,7 +211,7 @@ def page(lang, kind, body):
   <a class="skip" href="#main">{c['skip']}</a>
   <header class="site-header wrap">
     <a class="brand" href="{root}{location(lang, 'home')}" aria-label="Timary — {c['home']}"><img src="{root}assets/icon.png" width="42" height="42" alt="">Timary<span class="brand-dot" aria-hidden="true">.</span></a>
-    <nav aria-label="{c['nav']}">{navigation}<a class="language" lang="{other}" hreflang="{other}" href="{root}{location(other, kind)}">{c['language']}</a></nav>
+    <nav aria-label="{c['nav']}">{navigation}{languages}</nav>
   </header>
   <main id="main" class="wrap">{body}</main>
   <footer class="site-footer wrap"><div><a class="footer-brand" href="{root}{location(lang, 'home')}">Timary</a><p>{c['footer']}</p></div><div><a href="mailto:{EMAIL}">{EMAIL}</a><p>© {date.today().year} Timary</p></div></footer>
@@ -213,7 +223,6 @@ def page(lang, kind, body):
 def build():
     urls = []
     for lang, c in COPY.items():
-        prefix = "" if lang == "en" else "uk/"
         arrow = '<span aria-hidden="true">↗</span>'
         home = f'''<section class="home-hero"><p class="eyebrow">Timary · iPhone &amp; iPad</p><h1>{c['tagline']}</h1><p class="lead">{c['intro']}</p></section>
 <div class="destination-grid"><a class="destination" href="privacy/"><span class="number">01</span><h2>{c['privacy']} {arrow}</h2><p>{c['privacy_card']}</p></a><a class="destination" href="support/"><span class="number">02</span><h2>{c['support']} {arrow}</h2><p>{c['support_card']}</p></a></div>'''

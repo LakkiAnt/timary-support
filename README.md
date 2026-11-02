@@ -4,14 +4,16 @@ Public information site for Timary. The app's source code and configuration are 
 
 - English privacy policy: https://lakkiant.github.io/timary-support/privacy/
 - Ukrainian privacy policy: https://lakkiant.github.io/timary-support/uk/privacy/
+- Russian privacy policy: https://lakkiant.github.io/timary-support/ru/privacy/
 - English support: https://lakkiant.github.io/timary-support/support/
 - Ukrainian support: https://lakkiant.github.io/timary-support/uk/support/
+- Russian support: https://lakkiant.github.io/timary-support/ru/support/
 
 Contact: anton.andreev.general@gmail.com
 
 ## Editing
 
-Edit the bilingual content in `build.py`, then run `python3 build.py`. The generated HTML and static assets are committed to `main`. GitHub Pages serves the repository root; `.nojekyll` disables Jekyll processing.
+Edit the English and Ukrainian content in `build.py` and the Russian content in `ru.json`, then run `python3 build.py`. The generated HTML and static assets are committed to `main`. GitHub Pages serves the repository root; `.nojekyll` disables Jekyll processing.
 
 The site has no JavaScript, external fonts, analytics, forms or cookies added by the developer. GitHub Pages performs its own hosting and security logging.
 
