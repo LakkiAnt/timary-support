@@ -16,7 +16,7 @@ COPY = {
         "intro": "Timary brings your appointments, clients and services together, so you can focus on the people you work with.",
         "home": "Home", "privacy": "Privacy policy", "support": "Support",
         "skip": "Skip to content", "nav": "Main navigation",
-        "date": "Effective and last updated: November 2, 2026",
+        "date": "Effective: November 2, 2026 · Last updated: November 8, 2026",
         "footer": "An organizer for independent service professionals.",
         "privacy_intro": "A clear explanation of what stays on your device, what is shared with service providers, and the choices you have.",
         "support_intro": "Have a question, found a problem, or need help with your data? Get in touch with the developer of Timary.",
@@ -91,7 +91,7 @@ COPY = {
         "intro": "Timary об’єднує записи, клієнтів і послуги, щоб ви могли зосередитися на людях, з якими працюєте.",
         "home": "Головна", "privacy": "Політика приватності", "support": "Підтримка",
         "skip": "Перейти до вмісту", "nav": "Основна навігація",
-        "date": "Чинна з 2 листопада 2026 року · Оновлено 2 листопада 2026 року",
+        "date": "Чинна з 2 листопада 2026 року · Оновлено 8 листопада 2026 року",
         "footer": "Органайзер для фахівців, які працюють за записом.",
         "privacy_intro": "Що залишається на вашому пристрої, які дані отримують постачальники сервісів і чим ви можете керувати.",
         "support_intro": "Маєте запитання, помітили проблему чи потрібна допомога з даними? Напишіть розробнику Timary.",
@@ -165,6 +165,23 @@ COPY = {
 
 
 COPY["ru"] = json.loads((ROOT / "ru.json").read_text(encoding="utf-8"))
+CALENDAR_COPY = {
+    "en": ("Optional Apple Calendar connection", [
+        "If you enable Apple Calendar sync, Timary requests full calendar access to find, create, update and delete its events. Client names, service names, visit times, statuses and links to appointments are sent to the calendar you choose. Phone numbers, social contacts, notes and financial fields are not sent. The calendar account provider processes the exported information under its own terms; iCloud calendars can make it available on your other devices.",
+        "Sync is one-way from Timary and is configured locally on one device. Turning it off keeps existing calendar events. The separate cleanup action shows the events for review before deleting them; it leaves the calendar and other events intact. Calendar permissions can be revoked in device settings."
+    ], "Open Settings → Apple Calendar, allow full access and create a Timary calendar or select an existing one. Enable sending on only one device. Choose iCloud to view events on other devices. Changes made in Apple Calendar do not update Timary and will be replaced with Timary data. If you move sending to another device, turn it off on the old one first, then select the same calendar on the new one."),
+    "uk": ("Необов’язкове підключення Apple Calendar", [
+        "Якщо ви вмикаєте синхронізацію з Apple Calendar, Timary запитує повний доступ до календарів для пошуку, створення, оновлення й видалення своїх подій. Імена клієнтів, назви послуг, час, статуси візитів і посилання на записи передаються в обраний календар. Телефони, соціальні контакти, нотатки й фінансові поля не передаються. Постачальник облікового запису календаря обробляє передану інформацію за власними умовами; календарі iCloud можуть зробити її доступною на інших ваших пристроях.",
+        "Передавання одностороннє, з Timary, і налаштовується локально на одному пристрої. Вимкнення залишає наявні події. Окрема дія очищення показує події перед видаленням; календар та інші події залишаються. Дозвіл на календарі можна відкликати в налаштуваннях пристрою."
+    ], "Відкрийте Параметри → Apple Calendar, надайте повний доступ і створіть календар Timary або виберіть наявний. Увімкніть передавання лише на одному пристрої. Виберіть iCloud для перегляду подій на інших пристроях. Зміни в Apple Calendar не повертаються в Timary та будуть замінені даними Timary. При перенесенні передавання спочатку вимкніть його на старому пристрої, потім виберіть той самий календар на новому."),
+    "ru": ("Необязательное подключение Apple Calendar", [
+        "Если вы включаете синхронизацию с Apple Calendar, Timary запрашивает полный доступ к календарям для поиска, создания, обновления и удаления своих событий. Имена клиентов, названия услуг, время, статусы визитов и ссылки на записи передаются в выбранный календарь. Телефоны, социальные контакты, заметки и финансовые поля не передаются. Поставщик учётной записи календаря обрабатывает переданную информацию по своим условиям; календари iCloud могут сделать её доступной на других ваших устройствах.",
+        "Передача односторонняя, из Timary, и настраивается локально на одном устройстве. При отключении существующие события остаются. Отдельное действие очистки показывает события перед удалением; календарь и другие события остаются. Доступ к календарям можно отозвать в настройках устройства."
+    ], "Откройте Параметры → Apple Calendar, предоставьте полный доступ и создайте календарь Timary или выберите существующий. Включите передачу только на одном устройстве. Выберите iCloud для просмотра событий на других устройствах. Изменения в Apple Calendar не возвращаются в Timary и будут заменены данными Timary. При переносе передачи сначала отключите её на старом устройстве, затем выберите тот же календарь на новом.")
+}
+for language, (heading, paragraphs, help_text) in CALENDAR_COPY.items():
+    COPY[language]["sections"].insert(4, ("apple-calendar", heading, paragraphs))
+    COPY[language]["help"].insert(3, ("Apple Calendar", help_text))
 LANGUAGE_NAMES = {"en": "English", "uk": "Українська", "ru": "Русский"}
 
 
