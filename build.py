@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parent
 BASE = "https://lakkiant.github.io/timary-support"
 EMAIL = "anton.andreev.general@gmail.com"
 CONTACT = f'<a href="mailto:{EMAIL}">{EMAIL}</a>'
+TERMS = "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
 
 COPY = {
     "en": {
@@ -16,7 +17,8 @@ COPY = {
         "intro": "Timary brings your appointments, clients and services together, so you can focus on the people you work with.",
         "home": "Home", "privacy": "Privacy policy", "support": "Support",
         "skip": "Skip to content", "nav": "Main navigation",
-        "date": "Effective: November 2, 2026 · Last updated: November 8, 2026",
+        "date": "Effective: November 2, 2026 · Last updated: November 15, 2026",
+        "terms": "Terms of use (Apple standard EULA)",
         "footer": "An organizer for independent service professionals.",
         "privacy_intro": "A clear explanation of what stays on your device, what is shared with service providers, and the choices you have.",
         "support_intro": "Have a question, found a problem, or need help with your data? Get in touch with the developer of Timary.",
@@ -37,6 +39,10 @@ COPY = {
             ("icloud", "Optional iCloud sync", [
                 "iCloud sync is off until you enable it. When enabled, Timary uses Apple's CloudKit private database associated with your Apple Account to sync records and supported settings across your devices. This includes clients, services, appointments, days off, preferences and message templates. System contact links and device permissions stay on the device.",
                 "Apple processes the synced data under its service terms and privacy policy. The developer does not have a support interface for browsing your private iCloud records. Turning sync off does not delete data already stored in iCloud. Changes to the sync setting take effect after you fully close and reopen Timary."
+            ]),
+            ("subscriptions", "Timary Pro purchases", [
+                "Apple processes Timary Pro subscriptions and offer codes through the App Store. Timary reads verified StoreKit information about the purchased product, subscription status and access period on your device to unlock Pro and restore purchases. The developer does not receive your payment-card number or other payment credentials from Apple.",
+                "In Release builds with analytics enabled, successful purchase and restore events are sent to Google Analytics for Firebase along with its app-instance or installation identifier. The purchase event includes only a plan category (monthly, annual or legacy lifetime); the restore event has no custom parameters. These defined events do not include receipts, signed transactions, transaction identifiers, your Apple Account or client records. Analytics is described below."
             ]),
             ("permissions", "Contacts, photos and notifications", [
                 "If you choose a person through Apple's contact picker, Timary imports the name and selected phone number you choose and keeps a local link to that contact. Timary does not upload your address book to a developer-operated server.",
@@ -79,6 +85,11 @@ COPY = {
             ])
         ],
         "help": [
+            ("Free features and Timary Pro", "Appointments, clients, services, history, iCloud and data transfer remain available without a subscription. Optional Timary Pro opens client messages and templates, detailed statistics and date selection, calendar details, reminder customization, and selecting days and exporting available-hours images. Viewing today’s available hours and creating a story preview remain free. Monthly and annual subscriptions provide the same Pro features."),
+            ("Prices, trials and renewal", "The App Store shows the price, currency, billing period and any eligible introductory trial before you confirm. Offers depend on your Apple Account and storefront; a trial is not available to everyone. Subscriptions renew automatically unless canceled. After a trial, the displayed subscription price is charged unless you cancel."),
+            ("Restore purchases", "Use the Apple Account that made the purchase. In Timary, open Settings → Pro → Unlock full access, then choose Restore Purchases on the purchase screen. This also restores previously purchased lifetime access. If access is still missing, check your App Store account and contact support without sending payment credentials."),
+            ("Manage or cancel a subscription", 'In Timary, open Settings → Pro → Manage Subscription, or open your device Settings → your name → Subscriptions → Timary. Cancel a trial at least 24 hours before it ends to avoid renewal. Deleting Timary does not cancel the subscription. Canceling renewal normally keeps paid access until the end of the current period. <a href="https://support.apple.com/en-us/118428">Apple’s cancellation instructions</a>.'),
+            ("Offer codes and refunds", 'If neither Pro nor a current subscription is active, Settings → Pro shows Redeem promo code when access has been checked. Apple handles redemption and eligibility; access opens after StoreKit verifies the purchase. For a refund request, use <a href="https://reportaproblem.apple.com/">Apple’s Report a Problem service</a>; Apple decides eligibility.'),
             ("When you write", "Include your Timary version, iOS or iPadOS version, device model and the steps that led to the issue. You can find the app version at the bottom of Settings. Please redact client names, contact details and notes from screenshots."),
             ("Reminders", "Check that notifications are allowed for Timary in device settings, then review the reminder settings in the app. Reminders notify you; Timary does not automatically send messages to clients."),
             ("iCloud sync", "Use the same Apple Account on your devices and enable sync in Timary on each one. Fully close and reopen the app after changing the setting. Turning sync off does not delete your iCloud data."),
@@ -91,7 +102,8 @@ COPY = {
         "intro": "Timary об’єднує записи, клієнтів і послуги, щоб ви могли зосередитися на людях, з якими працюєте.",
         "home": "Головна", "privacy": "Політика приватності", "support": "Підтримка",
         "skip": "Перейти до вмісту", "nav": "Основна навігація",
-        "date": "Чинна з 2 листопада 2026 року · Оновлено 8 листопада 2026 року",
+        "date": "Чинна з 2 листопада 2026 року · Оновлено 15 листопада 2026 року",
+        "terms": "Умови використання (стандартна EULA Apple)",
         "footer": "Органайзер для фахівців, які працюють за записом.",
         "privacy_intro": "Що залишається на вашому пристрої, які дані отримують постачальники сервісів і чим ви можете керувати.",
         "support_intro": "Маєте запитання, помітили проблему чи потрібна допомога з даними? Напишіть розробнику Timary.",
@@ -112,6 +124,10 @@ COPY = {
             ("icloud", "Необов’язкова синхронізація iCloud", [
                 "Синхронізація iCloud вимкнена, доки ви її не ввімкнете. Після ввімкнення Timary використовує приватну базу Apple CloudKit, пов’язану з вашим обліковим записом Apple, для обміну даними між вашими пристроями. Передаються клієнти, послуги, записи, вихідні, налаштування та шаблони повідомлень. Зв’язки із системними контактами й дозволи залишаються на пристрої.",
                 "Apple обробляє синхронізовані дані відповідно до своїх умов і політики приватності. Розробник не має інтерфейсу підтримки для перегляду ваших приватних записів iCloud. Вимкнення синхронізації не видаляє дані, вже збережені в iCloud. Зміна режиму застосовується після повного закриття й повторного відкриття Timary."
+            ]),
+            ("subscriptions", "Покупки Timary Pro", [
+                "Apple обробляє підписки й промокоди Timary Pro через App Store. Timary читає перевірені відомості StoreKit про придбаний продукт, стан підписки та строк доступу на вашому пристрої для відкриття Pro й відновлення покупок. Розробник не отримує від Apple номер вашої платіжної картки чи інші платіжні реквізити.",
+                "У Release-збірках із увімкненою аналітикою події успішної покупки й відновлення передаються Google Analytics for Firebase разом з ідентифікатором інсталяції або екземпляра застосунку. Подія покупки містить лише категорію плану (місячний, річний або попередній довічний); подія відновлення не має власних параметрів. Ці визначені події не містять квитанцій, підписаних транзакцій, ідентифікаторів транзакцій, вашого облікового запису Apple чи даних клієнтів. Аналітику описано нижче."
             ]),
             ("permissions", "Контакти, фото та сповіщення", [
                 "Коли ви обираєте людину через системний вибір контактів Apple, Timary імпортує вибрані ім’я та номер телефону й зберігає локальний зв’язок із контактом. Timary не завантажує вашу адресну книгу на сервер розробника.",
@@ -154,6 +170,11 @@ COPY = {
             ])
         ],
         "help": [
+            ("Безкоштовні можливості й Timary Pro", "Записи, клієнти, послуги, історія, iCloud і перенесення даних залишаються доступними без підписки. Додатковий Timary Pro відкриває повідомлення й шаблони для клієнтів, детальну статистику та вибір дат, деталі календаря, налаштування нагадувань, вибір днів і експорт зображень вільних годин. Перегляд вільних годин за сьогодні та створення прев’ю сторіс залишаються безкоштовними. Місячна й річна підписки надають однакові можливості Pro."),
+            ("Ціни, пробний період і поновлення", "До підтвердження покупки App Store показує ціну, валюту, період оплати та доступну вступну пробну пропозицію. Пропозиції залежать від вашого облікового запису Apple й вітрини магазину; пробний період доступний не всім. Підписка поновлюється автоматично до скасування. Після пробного періоду списується показана ціна підписки, якщо ви її не скасуєте."),
+            ("Відновлення покупок", "Використовуйте обліковий запис Apple, з якого зроблено покупку. У Timary відкрийте Параметри → Pro → Розблокуй повний доступ, а на екрані покупки виберіть «Відновити покупки». Також відновлюється раніше придбаний довічний доступ. Якщо доступ не з’явився, перевірте обліковий запис App Store й напишіть у підтримку, не надсилаючи платіжних реквізитів."),
+            ("Керування та скасування підписки", 'У Timary відкрийте Параметри → Pro → Керувати підпискою або налаштування пристрою → ваше ім’я → Підписки → Timary. Щоб уникнути поновлення пробного періоду, скасуйте його щонайменше за 24 години до завершення. Видалення Timary не скасовує підписку. Після скасування поновлення оплачений доступ зазвичай зберігається до кінця поточного періоду. <a href="https://support.apple.com/uk-ua/118428">Інструкція Apple зі скасування</a>.'),
+            ("Промокоди й повернення коштів", 'Якщо у вас немає ані Pro, ані чинної підписки, після перевірки доступу в Параметри → Pro з’являється «Активувати промокод». Apple обробляє активацію й перевіряє право на пропозицію; доступ відкривається після перевірки покупки StoreKit. Для запиту повернення коштів скористайтеся <a href="https://reportaproblem.apple.com/">сервісом Apple «Повідомити про проблему»</a>; рішення приймає Apple.'),
             ("Що вказати у зверненні", "Напишіть версію Timary, версію iOS або iPadOS, модель пристрою та кроки, після яких виникла проблема. Версія застосунку є внизу налаштувань. На скриншотах приховайте імена, контакти й нотатки клієнтів."),
             ("Нагадування", "Перевірте дозвіл на сповіщення Timary в налаштуваннях пристрою та параметри нагадувань у застосунку. Нагадування сповіщають вас; Timary не надсилає повідомлення клієнтам автоматично."),
             ("Синхронізація iCloud", "Використовуйте той самий обліковий запис Apple та ввімкніть синхронізацію Timary на кожному пристрої. Після зміни режиму повністю закрийте й відкрийте застосунок. Вимкнення синхронізації не видаляє дані iCloud."),
@@ -231,7 +252,7 @@ def page(lang, kind, body):
     <nav aria-label="{c['nav']}">{navigation}{languages}</nav>
   </header>
   <main id="main" class="wrap">{body}</main>
-  <footer class="site-footer wrap"><div><a class="footer-brand" href="{root}{location(lang, 'home')}">Timary</a><p>{c['footer']}</p></div><div><a href="mailto:{EMAIL}">{EMAIL}</a><p>© {date.today().year} Timary</p></div></footer>
+  <footer class="site-footer wrap"><div><a class="footer-brand" href="{root}{location(lang, 'home')}">Timary</a><p>{c['footer']}</p><p><a href="{TERMS}">{c['terms']}</a></p></div><div><a href="mailto:{EMAIL}">{EMAIL}</a><p>© {date.today().year} Timary</p></div></footer>
 </body>
 </html>
 '''
